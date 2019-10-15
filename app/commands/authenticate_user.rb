@@ -16,13 +16,6 @@ class AuthenticateUser
   
     def user
         user = User.find_by_email(email)
-        puts "============================================"
-        puts "USER EMAIL"
-        puts user.email
-        puts "============================================"
-        puts "USER AUTHENTICATION"
-        puts user.authenticate(password).email
-        puts "============================================"
         return user if user && user.authenticate(password)
     
         errors.add :user_authentication, 'invalid credentials'
