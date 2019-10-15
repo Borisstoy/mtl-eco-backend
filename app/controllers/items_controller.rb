@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
     before_action :set_item, only: [:show, :update, :destroy]
-    before_action :authenticate_request, except: [:index]
-    
+    skip_before_action :authenticate_requests, only: [:index, :show]
+
     # GET /items
     def index
         @items = Item.all
