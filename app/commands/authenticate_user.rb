@@ -1,5 +1,3 @@
-require 'jwt'
-
 class AuthenticateUser
     prepend SimpleCommand
   
