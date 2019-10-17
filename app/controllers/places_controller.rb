@@ -19,18 +19,18 @@ class PlacesController < ApplicationController
         @place = Place.new(place_params)
 
         if @place.save
-        render json: @place, status: :created, location: @place
+            render json: @place, status: :created, location: @place
         else
-        render json: @place.errors, status: :unprocessable_entity
+            render json: @place.errors, status: :unprocessable_entity
         end
     end
 
     # PATCH/PUT /places/1
     def update
         if @place.update(place_params)
-        render json: @place
+            render json: @place
         else
-        render json: @place.errors, status: :unprocessable_entity
+            render json: @place.errors, status: :unprocessable_entity
         end
     end
 
@@ -46,7 +46,7 @@ class PlacesController < ApplicationController
         end
 
         # Only allow a trusted parameter "white list" through.
-        def places_params
-            params.require(:places).permit(:name, :description, :address)
+        def place_params
+            params.require(:place).permit(:name, :description, :address)
         end
     end
