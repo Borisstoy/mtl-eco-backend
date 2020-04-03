@@ -13,6 +13,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'
 gem 'simple_command'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+gem 'geocoder'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'

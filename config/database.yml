@@ -8,11 +8,12 @@ default: &default
 development:
   <<: *default
   # database: mtl-eco-backend_development
+  host: localhost
   adapter: postgresql
   encoding: unicode
   database: mtl-eco-backend
-  username: boris
-  password: Feliceto
+  username: postgres
+  password: 11mai1988
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
