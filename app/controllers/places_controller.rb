@@ -1,6 +1,6 @@
 class PlacesController < ApplicationController
     before_action :set_places, only: [:show, :update, :destroy]
-    skip_before_action :authenticate_request, only: [:index, :show]
+    skip_before_action :authenticate_request, only: [:index, :show, :search]
 
     # GET /places
     def index
@@ -39,6 +39,18 @@ class PlacesController < ApplicationController
         @place.destroy
     end
 
+    # Search places by attribute
+    def search
+        if params[:kind]
+            places = Place.search_by_kind(params[:kind])
+            if places.present?
+                render json: places
+            else
+                render json: 'no_places_search_results', status: :no_content
+            end
+        end
+    end
+
     private
         # Use callbacks to share common setup or constraints between actions.
         def set_places
@@ -48,5 +60,9 @@ class PlacesController < ApplicationController
         # Only allow a trusted parameter "white list" through.
         def place_params
             params.require(:place).permit(:name, :description, :address)
+        end
+
+        def search_params
+            @search_params = params[:kind]
         end
     end
