@@ -27,7 +27,7 @@ namespace :import_places do
             )
         end
 
-        puts "JSON parsing starting done !"
+        puts "JSON parsing done !"
 
     end
 end
