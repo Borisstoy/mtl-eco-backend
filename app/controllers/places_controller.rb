@@ -42,7 +42,7 @@ class PlacesController < ApplicationController
     # Search places by attribute
     def search
         if params[:kind]
-            places = Place.search_by_kind(params[:kind])
+            places = params[:kind].split(',').map { |param| Place.search_by_kind(param) }
             if places.present?
                 render json: places
             else
