@@ -46,7 +46,7 @@ class PlacesController < ApplicationController
             if places.present?
                 render json: places
             else
-                render json: 'no_places_search_results', status: :no_content
+                render json: @places
             end
         end
     end
