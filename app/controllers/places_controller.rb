@@ -41,15 +41,11 @@ class PlacesController < ApplicationController
 
     # Search places by attribute
     def search
-        if params[:kind].empty? || !params[:kind].empty ?
-            places = params[:kind].split(',').map { |param| Place.search_by_kind(param) }.flatten
-            if places.present?
-                render json: places
-            else
-                render json: 'no_places_search_results', status: :no_content
-            end
+        if params[:kind].empty? || params[:kind].blank?
+            render json: Place.all
         else
-            render json: @places
+            places = params[:kind].split(',').map { |param| Place.search_by_kind(param) }.flatten
+            render json: places
         end
     end
 
